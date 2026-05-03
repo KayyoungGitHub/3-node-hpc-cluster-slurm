@@ -1,0 +1,2 @@
+Simulation completed successfully
+Timesteps per second: 316.8
