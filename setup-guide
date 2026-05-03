@@ -1,1 +1,40 @@
 
+# HPC Cluster Setup Guide
+
+## 1. Install Rocky Linux
+- Install Rocky Linux on 3 virtual machines
+- Use minimal installation
+
+## 2. Configure Network
+- Assign static IPs:
+  - Head Node: 192.168.1.10
+  - Compute Node 1: 192.168.1.11
+  - Compute Node 2: 192.168.1.12
+
+## 3. Set Hostnames
+- head-node
+- compute-node-1
+- compute-node-2
+
+## 4. Configure SSH
+- Generate SSH key:
+  ssh-keygen
+- Copy to nodes:
+  ssh-copy-id user@compute-node-1
+  ssh-copy-id user@compute-node-2
+
+## 5. Install Packages
+sudo dnf install -y gcc make openmpi openmpi-devel slurm nfs-utils
+
+## 6. Configure NFS
+- Create shared directory
+- Export using /etc/exports
+
+## 7. Configure Slurm
+- Setup slurm.conf
+- Start services:
+  systemctl start slurmctld
+  systemctl start slurmd
+
+## 8. Run Jobs
+sbatch job_script.sh
